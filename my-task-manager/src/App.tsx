@@ -1,12 +1,18 @@
 import React from "react";
-import { BrowserRouter as Router, Routes, Route, Link } from "react-router-dom";
+import { BrowserRouter as Router, Routes, Route, Link, useLocation } from "react-router-dom";
 import { Layout, Menu } from "antd";
 import { UnorderedListOutlined, PlusOutlined } from "@ant-design/icons";
 import TaskList from "./pages/task-list";
 import AddTask from "./pages/add-task";
 import "../src/styles/globals.css"; 
+import TaskForm from "./components/task-form";
 
 const { Header, Content } = Layout;
+
+const EditTaskWrapper = () => {
+  const location = useLocation();
+  return <TaskForm existingTask={location.state} />;
+};
 
 const App: React.FC = () => {
   return (
@@ -27,6 +33,7 @@ const App: React.FC = () => {
           <Routes>
             <Route path="/" element={<TaskList />} />
             <Route path="/add-task" element={<AddTask />} />
+            <Route path="/edit-task/:id" element={<EditTaskWrapper  />} />
           </Routes>
         </Content>
       </Layout>
