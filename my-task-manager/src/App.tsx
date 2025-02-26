@@ -1,20 +1,35 @@
 import React from "react";
 import { BrowserRouter as Router, Routes, Route, Link } from "react-router-dom";
+import { Layout, Menu } from "antd";
+import { UnorderedListOutlined, PlusOutlined } from "@ant-design/icons";
 import TaskList from "./pages/task-list";
 import AddTask from "./pages/add-task";
+import "../src/styles/globals.css"; 
+
+const { Header, Content } = Layout;
 
 const App: React.FC = () => {
   return (
     <Router>
-      <nav style={{ display: "flex", gap: "10px", padding: "10px", borderBottom: "1px solid #ccc" }}>
-        <Link to="/">🏠 Task List</Link>
-        <Link to="/add-task">➕ Add Task</Link>
-      </nav>
+      <Layout className="layout-container">
+        <Header className="header-menu">
+          <Menu theme="dark" mode="horizontal" defaultSelectedKeys={["1"]}>
+            <Menu.Item key="1" icon={<UnorderedListOutlined />}>
+              <Link to="/">Task List</Link>
+            </Menu.Item>
+            <Menu.Item key="2" icon={<PlusOutlined />}>
+              <Link to="/add-task">Add Task</Link>
+            </Menu.Item>
+          </Menu>
+        </Header>
 
-      <Routes>
-        <Route path="/" element={<TaskList />} />
-        <Route path="/add-task" element={<AddTask />} />
-      </Routes>
+        <Content className="content-container">
+          <Routes>
+            <Route path="/" element={<TaskList />} />
+            <Route path="/add-task" element={<AddTask />} />
+          </Routes>
+        </Content>
+      </Layout>
     </Router>
   );
 };

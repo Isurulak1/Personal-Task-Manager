@@ -1,35 +1,37 @@
 import React, { useState } from "react";
 import { useDispatch } from "react-redux";
 import { addTask } from "../store/taskSlice";
-import { useNavigate } from "react-router-dom";
+import { Form, Input, Button, Card } from "antd";
+import "../styles/globals.css";
 
 const AddTask: React.FC = () => {
   const [taskText, setTaskText] = useState("");
   const dispatch = useDispatch();
-  const navigate = useNavigate(); 
 
-  const handleSubmit = (e: React.FormEvent) => {
-    e.preventDefault();
+  const handleSubmit = () => {
     if (taskText.trim()) {
       dispatch(addTask(taskText));
       setTaskText("");
-      navigate("/"); 
     }
   };
 
   return (
-    <div>
-      <h2>Add a New Task</h2>
-      <form onSubmit={handleSubmit}>
-        <input
-          type="text"
-          value={taskText}
-          onChange={(e) => setTaskText(e.target.value)}
-          placeholder="Enter task..."
-        />
-        <button type="submit">Add Task</button>
-      </form>
-    </div>
+    <Card title="➕ Add a New Task" className="card-full-width">
+      <Form onFinish={handleSubmit}>
+        <Form.Item>
+          <Input
+            value={taskText}
+            onChange={(e) => setTaskText(e.target.value)}
+            placeholder="Enter task..."
+          />
+        </Form.Item>
+        <Form.Item>
+          <Button type="primary" htmlType="submit" block>
+            Add Task
+          </Button>
+        </Form.Item>
+      </Form>
+    </Card>
   );
 };
 
