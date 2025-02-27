@@ -3,7 +3,7 @@ import taskReducer from "./taskSlice";
 
 const store = configureStore({
   reducer: {
-    tasks: taskReducer, // Register the tasks slice
+    tasks: taskReducer, 
   },
 });
 

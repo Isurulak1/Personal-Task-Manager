@@ -39,7 +39,7 @@ const TaskForm: React.FC<TaskFormProps> = ({ existingTask }) => {
     };
   
     if (existingTask) {
-      dispatch(editTask(taskData));  // ✅ Send full task object
+      dispatch(editTask(taskData));  
     } else {
       dispatch(addTask(taskData));
     }
