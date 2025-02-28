@@ -4,7 +4,7 @@ import { RootState } from "../store";
 import { Card, Typography, Button } from "antd";
 import { Link } from "react-router-dom";
 import "../styles/globals.css";
-import AddList from "../components/task-list";
+import ShowList from "../components/task-list";
 
 const { Text } = Typography;
 
@@ -18,7 +18,7 @@ const TaskList: React.FC = () => {
           No tasks available. <Link to="/add-task">Add one!</Link>
         </Text>
       ) : (
-        <AddList tasks={tasks} />
+        <ShowList tasks={tasks} />
       )}
       <Button type="primary" block className="add-task-button">
         <Link to="/add-task">➕ Add New Task</Link>

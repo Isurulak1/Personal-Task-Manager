@@ -12,7 +12,7 @@ interface LayoutProps {
 
 const LayoutComponent: React.FC<LayoutProps> = ({ children }) => {
   return (
-    <Layout className="layout-container">
+    <Layout>
       <Header className="header-menu">
         <Menu theme="dark" mode="horizontal" defaultSelectedKeys={["1"]}>
           <Menu.Item key="1" icon={<UnorderedListOutlined />}>

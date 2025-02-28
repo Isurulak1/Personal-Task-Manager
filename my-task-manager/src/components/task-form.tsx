@@ -34,7 +34,7 @@ const TaskForm: React.FC<TaskFormProps> = ({ existingTask }) => {
       id: existingTask ? existingTask.id : Date.now(),
       title: values.title,
       description: values.description || "",
-      dueDate: values.dueDate ? values.dueDate.toISOString() : "",
+      dueDate: values.dueDate ? values.dueDate.format("YYYY-MM-DD") : "No due date",
       completed: values.completed,
     };
   
@@ -49,8 +49,8 @@ const TaskForm: React.FC<TaskFormProps> = ({ existingTask }) => {
   
 
   return (
-    <Card title={existingTask ? "✏️ Edit Task" : "➕ Add a New Task"} style={{ width: "100%" }}>
-    <Form form={form} onFinish={handleSubmit} layout="vertical"> {/* ✅ Pass the form instance */}
+    <Card title={existingTask ? "✏️ Edit Task": " "} style={{ width: "100%" }}>
+    <Form form={form} onFinish={handleSubmit} layout="vertical">
       <Form.Item name="title" label="Title" rules={[{ required: true, message: "Title is required!" }]}>
         <Input placeholder="Enter task title..." />
       </Form.Item>

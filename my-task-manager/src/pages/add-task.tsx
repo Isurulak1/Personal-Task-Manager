@@ -1,6 +1,5 @@
 import React from "react";
-import { useDispatch, useSelector } from "react-redux";
-import { RootState } from "../store";
+import { useDispatch } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import { addTask } from "../store/taskSlice";
 import { Form, Input, Button, Card, DatePicker } from "antd";
@@ -10,14 +9,13 @@ import moment from "moment";
 const AddTask: React.FC = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
-  const tasks = useSelector((state: RootState) => state.tasks.tasks); 
 
-  const handleSubmit = (values: { title: string; description?: string; dueDate?: string }) => {
+  const handleSubmit = (values: { title: string; description?: string; dueDate?: moment.Moment }) => {
     dispatch(
       addTask({
         title: values.title,
         description: values.description || "",
-        dueDate: values.dueDate ? moment(values.dueDate).toISOString() : "No due date",
+        dueDate: values.dueDate ? values.dueDate.format("YYYY-MM-DD") : "No due date",
         completed: false,
       })
     );
@@ -36,7 +34,7 @@ const AddTask: React.FC = () => {
         </Form.Item>
 
         <Form.Item label="Description" name="description">
-          <Input.TextArea rows={3} placeholder="Enter task description (optional)..." />
+          <Input.TextArea rows={5} placeholder="Enter task description (optional)..." />
         </Form.Item>
 
         <Form.Item label="Due Date" name="dueDate">

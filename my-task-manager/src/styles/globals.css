@@ -1,9 +1,15 @@
 body {
-    background-color: #f5f5f5;
+    background-color: #f0f2f5;
+    font-family: 'Inter', sans-serif;
+    color: #333;
   }
   
   .layout-container {
     min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
   }
   
   .header-menu {
@@ -26,9 +32,11 @@ body {
 
   .task-item {
     display: flex;
+    flex-wrap: wrap;
     align-items: center;
     justify-content: space-between;
     padding: 10px;
+    gap: 20px;
   }
   
   .task-checkbox {
@@ -55,9 +63,10 @@ body {
   .task-date {
     display: block;
     color: #007bff;
+    width: 150px;
     background: rgba(0, 123, 255, 0.1); 
-    padding: 5px 10px;
-    border-radius: 5px;
+    padding: 2px 10px;
+    border-radius: 10px;
     display: inline-block;
   }
   
@@ -71,6 +80,9 @@ body {
   }
   .card-full-width {
     width: 100%;
+    background: #fff;
+    padding: 15px;
+    border-radius: 10px;
   }
   
   .add-task-button {

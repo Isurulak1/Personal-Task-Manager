@@ -1,18 +1,18 @@
 import React from "react";
 import { useDispatch } from "react-redux";
 import { removeTask, toggleTask } from "../store/taskSlice";
-import { List, Button, Checkbox, Typography, Card } from "antd";
+import { List, Button, Checkbox, Typography} from "antd";
 import { DeleteOutlined, CheckOutlined, CalendarOutlined, EditOutlined } from "@ant-design/icons";
 import { useNavigate } from "react-router-dom";
 import { Task } from "../types/task";
 
 const { Title, Text } = Typography;
 
-interface AddListProps {
+interface ShowListProps {
   tasks: Task[];
 }
 
-const AddList: React.FC<AddListProps> = ({ tasks }) => {
+const ShowList: React.FC<ShowListProps> = ({ tasks }) => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
 
@@ -34,7 +34,7 @@ const AddList: React.FC<AddListProps> = ({ tasks }) => {
             <Text type="secondary" className="task-description">{task.description}</Text>
             <br />
             <Text type="secondary" className="task-date">
-              <CalendarOutlined /> Due: {task.dueDate}
+              <CalendarOutlined /> Due: {task.dueDate ? task.dueDate : "No due date"}
             </Text>
           </div>
           <div className="task-actions">
@@ -69,4 +69,4 @@ const AddList: React.FC<AddListProps> = ({ tasks }) => {
   );
 };
 
-export default AddList;
+export default ShowList;
